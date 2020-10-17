@@ -6,6 +6,7 @@ var sChars = ["@", "$", "!", "&", "^", "-", "+", "?", "<", ">"]
 
 var possibles = []
 var generateBtn = document.querySelector("#generate");
+
 // Write password to the #password input
 function writePassword() {
   var length = parseInt(prompt("How long does this password need to be?"))
@@ -15,15 +16,22 @@ if(length < 8 || length > 128 || isNaN(length)) {
 } else {
   var charactersTrue = confirm("Do you want characters?");
   var capCharsTrue = confirm("Do you want capitals?");
-  var numsTrue = confirm("Do you want nums?");
-  var sCharsTrue = confirm("Do you want special chars?");
+  var numsTrue = confirm("Do you want numbers?");
+  var sCharsTrue = confirm("Do you want special characters?");
 
   if (charactersTrue) { possibles.push(characters) };
   if (capCharsTrue) { possibles.push(capChars) };
   if (numsTrue) { possibles.push(nums) };
   if (sCharsTrue) { possibles.push(sChars) };
 
-console.log(possibles);
+  var password = ""
+
+  for (let i = 0; i < possibles.length; i++) {
+    let rand = Math.floor(Math.random() * possibles[i].length)
+    password += possibles[i][rand]
+  }
+  console.log(password)
+
 }
   // var password = generatePassword();
   // var passwordText = document.querySelector("#password");

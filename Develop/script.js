@@ -4,11 +4,11 @@ var capChars = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
 var nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 var sChars = ["@", "$", "!", "&", "^", "-", "+", "?", "<", ">"]
 
-var possibles = []
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
+  var possibles = []
   var length = parseInt(prompt("How long does this password need to be?"))
 
 if(length < 8 || length > 128 || isNaN(length)) {
@@ -25,21 +25,21 @@ if(length < 8 || length > 128 || isNaN(length)) {
   if (sCharsTrue) { possibles.push(sChars) };
 
   var password = ""
+    while(password.length < length) {
 
-  for (let i = 0; i < possibles.length; i++) {
-    let rand = Math.floor(Math.random() * possibles[i].length)
-    password += possibles[i][rand]
+      for (let i = 0; i < possibles.length; i++) {
+        if (password.length < length){
+       let rand = Math.floor(Math.random() * possibles[i].length)
+      password += possibles[i][rand]
+        }
+    }
   }
-  console.log(password)
+}
+console.log(password, `pasword lenth: ${password.length}`)
+    var passwordText = document.querySelector("#password");
+    passwordText.value = password;
 
 }
-  // var password = generatePassword();
-  // var passwordText = document.querySelector("#password");
-
-  // passwordText.value = password;
-
-}
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 

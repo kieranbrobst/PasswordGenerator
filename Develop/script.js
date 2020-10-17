@@ -35,7 +35,7 @@ if(length < 8 || length > 128 || isNaN(length)) {
     }
   }
 }
-console.log(password, `pasword lenth: ${password.length}`)
+// console.log(password, `pasword lenth: ${password.length}`)
     var passwordText = document.querySelector("#password");
     passwordText.value = password;
 
